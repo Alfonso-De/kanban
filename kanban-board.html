@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .kanban-board {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+        
+        .column {
+            min-width: 280px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0;
+            flex-shrink: 0;
+        }
+        
+        .column-header {
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .column-title {
+            color: #333;
+        }
+        
+        .card-count {
+            background: #666;
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+        
+        .cards-container {
+            padding: 16px;
+            min-height: 200px;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .priority {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .priority-high { background: #ffebee; color: #c62828; }
+        .priority-medium { background: #fff3e0; color: #ef6c00; }
+        .priority-low { background: #e8f5e8; color: #2e7d32; }
+        
+        .labels {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        
+        .label {
+            background: #f0f0f0;
+            color: #666;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        
+        .todo { border-top: 4px solid #2196f3; }
+        .in-progress { border-top: 4px solid #ff9800; }
+        .to-test { border-top: 4px solid #9c27b0; }
+        .done { border-top: 4px solid #4caf50; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #666;
+        }
+        
+        .assignee {
+            color: #666;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .kanban-board {
+                flex-direction: column;
+            }
+            
+            .column {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Kanban Board Template</h1>
+        <p>A standard workflow with To do, In progress, To Test, and Done columns</p>
+    </div>
+    
+    <div class="kanban-board">
+        <!-- To do Column -->
+        <div class="column todo">
+            <div class="column-header">
+                <span class="column-title">To do</span>
+                <span class="card-count">2</span>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-title">Define project requirements</div>
+                    <div class="card-description">Gather and document all project requirements from stakeholders</div>
+                    <div class="card-meta">
+                        <span class="priority priority-high">High</span>
+                    </div>
+                    <div class="labels">
+                        <span class="label">planning</span>
+                        <span class="label">requirements</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Set up development environment</div>
+                    <div class="card-description">Configure development tools and environment</div>
+                    <div class="card-meta">
+                        <span class="priority priority-medium">Medium</span>
+                    </div>
+                    <div class="labels">
+                        <span class="label">setup</span>
+                        <span class="label">development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- In progress Column -->
+        <div class="column in-progress">
+            <div class="column-header">
+                <span class="column-title">In progress</span>
+                <span class="card-count">1</span>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-title">Design database schema</div>
+                    <div class="card-description">Create the database structure for the application</div>
+                    <div class="card-meta">
+                        <span class="priority priority-high">High</span>
+                        <span class="assignee">developer1</span>
+                    </div>
+                    <div class="labels">
+                        <span class="label">database</span>
+                        <span class="label">design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- To Test Column -->
+        <div class="column to-test">
+            <div class="column-header">
+                <span class="column-title">To Test</span>
+                <span class="card-count">1</span>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-title">User authentication module</div>
+                    <div class="card-description">Login and registration functionality implementation</div>
+                    <div class="card-meta">
+                        <span class="priority priority-high">High</span>
+                        <span class="assignee">tester1</span>
+                    </div>
+                    <div class="labels">
+                        <span class="label">authentication</span>
+                        <span class="label">security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Done Column -->
+        <div class="column done">
+            <div class="column-header">
+                <span class="column-title">Done</span>
+                <span class="card-count">1</span>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-title">Project initialization</div>
+                    <div class="card-description">Initial project setup and repository creation</div>
+                    <div class="card-meta">
+                        <span class="priority priority-medium">Medium</span>
+                        <span class="assignee">developer1</span>
+                    </div>
+                    <div class="labels">
+                        <span class="label">setup</span>
+                        <span class="label">initialization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
